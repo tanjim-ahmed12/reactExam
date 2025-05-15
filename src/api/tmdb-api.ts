@@ -62,3 +62,22 @@ export const getMovies = () => {
         return json.results;
       });
   };
+
+  // Get Trending Movies
+  export const getTrendingMovies = () => {
+  return fetch(
+    `https://api.themoviedb.org/3/trending/movie/day?api_key=${import.meta.env.VITE_TMDB_KEY}`
+  )
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error(`Unable to fetch trending movies. Response status: ${response.status}`);
+      }
+      return response.json();
+    })
+    .catch((error) => {
+      throw error;
+    });
+};
+
+
+  
